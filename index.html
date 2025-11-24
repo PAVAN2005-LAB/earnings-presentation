@@ -1,0 +1,114 @@
+<!doctype html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>Quarterly Earnings Report — Interactive RevealJS Presentation</title>
+
+  <!-- RevealJS CDN -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/reveal.js@5.0.4/dist/reveal.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/reveal.js@5.0.4/dist/theme/black.css">
+
+  <!-- Highlight.js for code syntax -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/default.min.css">
+</head>
+<body>
+
+<div class="reveal">
+  <div class="slides">
+
+    <!-- SLIDE 1 -->
+    <section>
+      <h2>Quarterly Earnings Report</h2>
+      <p>Presented by: <b>Technical Consultant</b></p>
+      <p>Email: <b>24f1001768@ds.study.iitm.ac.in</b></p>
+
+      <p class="fragment">Modern Interactive Presentation</p>
+      <p class="fragment">RevealJS Powered</p>
+      <p class="fragment">Financial Insights</p>
+
+      <aside class="notes">
+        Introduce yourself and explain that this presentation uses modern web technologies (RevealJS).
+      </aside>
+    </section>
+
+    <!-- SLIDE 2 (Markdown slide) -->
+    <section data-markdown>
+      <textarea data-template>
+## 📊 Quarterly Performance (Markdown Slide)
+
+- **Revenue Growth:** 14%
+- **Operating Margin:** 8.2%
+- **Net Profit:** ₹ 122 Cr  
+- **EPS:** ₹ 14.3  
+
+*This entire slide is written using Markdown.*
+
+---
+
+Speaker Notes:
+- Highlight the revenue growth compared to the previous quarter.
+      </textarea>
+    </section>
+
+    <!-- SLIDE 3 — Code Highlighting -->
+    <section>
+      <h2>Data Processing Code</h2>
+      <pre><code class="language-python">
+import pandas as pd
+
+df = pd.read_csv("earnings.csv")
+profit = df["revenue"] - df["expenses"]
+print("Net Profit:", profit.sum())
+      </code></pre>
+
+      <aside class="notes">
+        Demonstrate backend data processing logic used to compute totals.
+      </aside>
+    </section>
+
+    <!-- SLIDE 4 — Math Equations -->
+    <section>
+      <h2>Financial Formula</h2>
+      <p>EPS is computed as:</p>
+
+      <p>
+        \\[
+           EPS = \frac{\text{Net Profit}}{\text{Total Outstanding Shares}}
+        \\]
+      </p>
+
+      <aside class="notes">
+        Explain EPS and why it matters to stakeholders.
+      </aside>
+    </section>
+
+    <!-- SLIDE 5 — Thank You -->
+    <section>
+      <h2>Thank You!</h2>
+      <p class="fragment">Questions?</p>
+      <p class="fragment">Feedback?</p>
+
+      <aside class="notes">
+        Invite questions and discussions.
+      </aside>
+    </section>
+
+  </div>
+</div>
+
+<!-- RevealJS Scripts -->
+<script src="https://cdn.jsdelivr.net/npm/reveal.js@5.0.4/dist/reveal.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/highlight.min.js"></script>
+
+<script>
+  Reveal.initialize({
+    hash: true,
+    slideNumber: true,
+    plugins: []
+  });
+
+  hljs.highlightAll();
+</script>
+
+</body>
+</html>
