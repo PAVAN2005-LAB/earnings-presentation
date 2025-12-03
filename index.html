@@ -1,114 +1,201 @@
 <!doctype html>
-<html>
-<head>
-  <meta charset="utf-8">
-  <title>Quarterly Earnings Report — Interactive RevealJS Presentation</title>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Quarterly Earnings — Reveal.js</title>
 
-  <!-- RevealJS CDN -->
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/reveal.js@5.0.4/dist/reveal.css">
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/reveal.js@5.0.4/dist/theme/black.css">
+    <!-- Reveal core CSS -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/reveal.js@4.5.0/dist/reveal.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/reveal.js@4.5.0/dist/theme/white.css" id="theme">
 
-  <!-- Highlight.js for code syntax -->
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/default.min.css">
-</head>
-<body>
+    <!-- Highlight.js default theme for code highlighting -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/highlight.js@11.8.0/styles/default.min.css">
 
-<div class="reveal">
-  <div class="slides">
+    <style>
+      /* Small custom style tweaks */
+      .chart { width: 100%; height: 380px; display:flex; align-items:center; justify-content:center; }
+      .contact { font-size: 0.95rem; opacity: 0.9; }
+      pre code { font-size: 0.9rem; }
+      /* Responsive font sizing */
+      :root { --r-main-font-size: calc(0.5vw + 0.5vh + 0.5vmin); }
+      .reveal { font-family: "Inter", Arial, sans-serif; font-size: var(--r-main-font-size); }
+    </style>
+  </head>
 
-    <!-- SLIDE 1 -->
-    <section>
-      <h2>Quarterly Earnings Report</h2>
-      <p>Presented by: <b>Pavan Kumar Yadav</b></p>
-      <p>Email: <b>24f1001768@ds.study.iitm.ac.in</b></p>
+  <body>
+    <div class="reveal">
+      <div class="slides">
 
-      <p class="fragment">Modern Interactive Presentation</p>
-      <p class="fragment">RevealJS Powered</p>
-      <p class="fragment">Financial Insights</p>
+        <!-- Title -->
+        <section>
+          <h1>Quarterly Earnings Report</h1>
+          <p class="contact">Technical Consultant — Financial Institution<br>Email: <a href="mailto:24f1001768@ds.study.iitm.ac.in">24f1001768@ds.study.iitm.ac.in</a></p>
+          <aside class="notes">Welcome stakeholders. Use this slide to introduce the report and outline agenda.</aside>
+        </section>
 
-      <aside class="notes">
-        Introduce yourself and explain that this presentation uses modern web technologies (RevealJS).
-      </aside>
-    </section>
+        <!-- Markdown slide -->
+        <section data-markdown>
+          <textarea data-template>
+## Highlights — Q3
 
-    <!-- SLIDE 2 (Markdown slide) -->
-    <section data-markdown>
-      <textarea data-template>
-## 📊 Quarterly Performance (Markdown Slide)
-
-- **Revenue Growth:** 14%
-- **Operating Margin:** 8.2%
-- **Net Profit:** ₹ 122 Cr  
-- **EPS:** ₹ 14.3  
-
-*This entire slide is written using Markdown.*
+- Revenue growth: **8.3%** YoY
+- Operating margin improvement: **+120 bps**
+- Net new customers: **12,400**
 
 ---
 
-Speaker Notes:
-- Highlight the revenue growth compared to the previous quarter.
-      </textarea>
-    </section>
+## Agenda
+1. Financial summary
+2. Segment performance
+3. Key drivers & outlook
+          </textarea>
+        </section>
 
-    <!-- SLIDE 3 — Code Highlighting -->
-    <section>
-      <h2>Data Processing Code</h2>
-      <pre><code class="language-python">
+        <!-- Animated fragments -->
+        <section>
+          <h2>Key Drivers</h2>
+          <ul>
+            <li class="fragment">Increased transaction volume</li>
+            <li class="fragment">Cost efficiencies</li>
+            <li class="fragment fade-up">Strong retention in core segments</li>
+          </ul>
+          <aside class="notes">Call out each fragment and provide 1–2 datapoints per item.</aside>
+        </section>
+
+        <!-- Code sample with highlighting -->
+        <section>
+          <h2>Data Extraction Script</h2>
+          <pre><code class="language-python"># Load financial data and compute YoY growth
 import pandas as pd
 
-df = pd.read_csv("earnings.csv")
-profit = df["revenue"] - df["expenses"]
-print("Net Profit:", profit.sum())
-      </code></pre>
+def yoy_growth(df, col):
+    prev = df[col].shift(4)
+    return (df[col] - prev) / prev * 100
 
-      <aside class="notes">
-        Demonstrate backend data processing logic used to compute totals.
-      </aside>
-    </section>
+# Example usage
+# df['revenue_yoy'] = yoy_growth(df, 'revenue')
+</code></pre>
+          <aside class="notes">Walk through the code quickly; highlight the shift(4) for quarterly comparison.</aside>
+        </section>
 
-    <!-- SLIDE 4 — Math Equations -->
-    <section>
-      <h2>Financial Formula</h2>
-      <p>EPS is computed as:</p>
+        <!-- Math / Formula -->
+        <section>
+          <h2>Key Financial Formula</h2>
+          <p>Bayes / probability isn’t typical — here is a margin formula:</p>
+          <p>\[\text{Operating Margin} = \frac{\text{Operating Income}}{\text{Revenue}} \times 100\%\]</p>
+          <p>And a present-value style formula (simple):</p>
+          <p>\[PV = \frac{CF_1}{(1+r)^1} + \frac{CF_2}{(1+r)^2} + \dots + \frac{CF_n}{(1+r)^n}\]</p>
+          <aside class="notes">Explain the meaning of CF (cash flow) and the discount rate r; show quick example on a whiteboard if available.</aside>
+        </section>
 
-      <p>
-        \\[
-           EPS = \frac{\text{Net Profit}}{\text{Total Outstanding Shares}}
-        \\]
-      </p>
+        <!-- Simple interactive chart placeholder (no heavy libs) -->
+        <section id="chart-slide">
+          <h2>Revenue Trend</h2>
+          <div class="chart" id="tiny-chart">Loading chart...</div>
+          <aside class="notes">Use this slide to narrate revenue drivers; toggle between regions if you have an interactive chart loaded.</aside>
+        </section>
 
-      <aside class="notes">
-        Explain EPS and why it matters to stakeholders.
-      </aside>
-    </section>
+        <!-- Mermaid diagram -->
+        <section>
+          <h2>Data Flow</h2>
+          <div class="mermaid">graph TD
+A[Data Ingest] --> B[Transform]
+B --> C[Modeling]
+C --> D[Dashboards]</div>
+          <aside class="notes">Mermaid renders in-slide; explain the pipeline briefly.</aside>
+        </section>
 
-    <!-- SLIDE 5 — Thank You -->
-    <section>
-      <h2>Thank You!</h2>
-      <p class="fragment">Questions?</p>
-      <p class="fragment">Feedback?</p>
+        <!-- Speaker notes heavy slide -->
+        <section>
+          <h2>Q&amp;A</h2>
+          <p>Thank you — open for questions.</p>
+          <aside class="notes">For difficult questions, refer to appendix slides and the backup dataset.
+- Slide backup-1: detailed margins
+- Slide backup-2: segment tables</aside>
+        </section>
 
-      <aside class="notes">
-        Invite questions and discussions.
-      </aside>
-    </section>
+      </div>
+    </div>
 
-  </div>
-</div>
+    <!-- Reveal core JS + plugins -->
+    <script src="https://cdn.jsdelivr.net/npm/reveal.js@4.5.0/dist/reveal.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/reveal.js@4.5.0/plugin/markdown/markdown.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/reveal.js@4.5.0/plugin/highlight/highlight.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/reveal.js@4.5.0/plugin/math/math.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/reveal.js@4.5.0/plugin/notes/notes.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/mermaid@10.4.0/dist/mermaid.min.js"></script>
 
-<!-- RevealJS Scripts -->
-<script src="https://cdn.jsdelivr.net/npm/reveal.js@5.0.4/dist/reveal.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/highlight.min.js"></script>
+    <script>
+      // Initialize mermaid (for diagram rendering)
+      if (window.mermaid) {
+        mermaid.initialize({ startOnLoad: true, theme: 'default' });
+      }
 
-<script>
-  Reveal.initialize({
-    hash: true,
-    slideNumber: true,
-    plugins: []
-  });
+      // Initialize Reveal
+      Reveal.initialize({
+        width: 1280,
+        height: 720,
+        margin: 0.06,
+        controls: true,
+        progress: true,
+        history: true,
+        center: true,
+        transition: 'slide',
+        plugins: [ RevealMarkdown, RevealHighlight, RevealMath, RevealNotes ]
+      });
 
-  hljs.highlightAll();
-</script>
+      // Tiny demo chart (vanilla JS) — rendered when slide becomes active
+      const revenue = [820, 860, 900, 980, 1030, 1120]; // sample numbers
+      function drawTinyChart() {
+        const el = document.getElementById('tiny-chart');
+        el.innerHTML = '';
+        const svgNS = 'http://www.w3.org/2000/svg';
+        const w = el.clientWidth || 700;
+        const h = el.clientHeight || 300;
+        const svg = document.createElementNS(svgNS, 'svg');
+        svg.setAttribute('viewBox', `0 0 ${w} ${h}`);
+        svg.style.width = '100%';
+        svg.style.height = '100%';
 
-</body>
+        const max = Math.max(...revenue);
+        const padding = 30;
+        const step = (w - padding * 2) / (revenue.length - 1);
+
+        // draw polyline
+        const points = revenue.map((v,i) => `${padding + i*step},${h - padding - (v/max)*(h-2*padding)}` ).join(' ');
+        const poly = document.createElementNS(svgNS, 'polyline');
+        poly.setAttribute('points', points);
+        poly.setAttribute('fill', 'none');
+        poly.setAttribute('stroke-width', '3');
+        poly.setAttribute('stroke', '#337');
+        svg.appendChild(poly);
+
+        // animate points as fragments by creating circles with class fragments
+        revenue.forEach((v,i) => {
+          const cx = padding + i*step;
+          const cy = h - padding - (v/max)*(h-2*padding);
+          const c = document.createElementNS(svgNS, 'circle');
+          c.setAttribute('cx', cx);
+          c.setAttribute('cy', cy);
+          c.setAttribute('r', 5);
+          c.classList.add('fragment');
+          svg.appendChild(c);
+        });
+
+        el.appendChild(svg);
+      }
+
+      Reveal.addEventListener('slidechanged', function(e){
+        if (e.currentSlide && e.currentSlide.id === 'chart-slide') {
+          drawTinyChart();
+        }
+      });
+
+      // Draw if starting on that slide
+      if (document.querySelector('.slides section.present') && document.querySelector('.slides section.present').id === 'chart-slide') {
+        drawTinyChart();
+      }
+    </script>
+  </body>
 </html>
